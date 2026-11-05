@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@
       linear-gradient(225deg,var(--copper) 25%,transparent 25%) -6px 0/12px 12px;
   }
 
-  header{text-align:center;padding:56px 20px 64px;position:relative;overflow:hidden;isolation:isolate}
+  header{text-align:center;padding:64px 20px 64px;position:relative;overflow:hidden;isolation:isolate}
   header::before{
     content:"";position:absolute;z-index:-1;
     width:min(560px,128vw);aspect-ratio:1/1;
@@ -121,20 +121,43 @@
     margin-top:22px;font-size:13px;letter-spacing:.32em;text-transform:uppercase;
     color:var(--cream);font-weight:600;
   }
+
+  /* language switch */
+  html[data-lang="en"] [lang="es"], html[data-lang="es"] [lang="en"]{display:none !important}
+  .langbar{position:sticky;top:0;z-index:10;display:flex;justify-content:flex-end;align-items:flex-start;padding:12px 16px 0;height:0;overflow:visible}
+  .langbtn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(13,11,10,.94);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+    border:1px solid var(--copper);border-radius:999px;padding:9px 16px;
+    font:600 14px/1 "Source Sans 3",system-ui,sans-serif;letter-spacing:.06em;color:var(--muted);
+    cursor:pointer;
+  }
+  .langbtn .sep{opacity:.4}
+  html[data-lang="en"] .langbtn .opt[data-l="en"],
+  html[data-lang="es"] .langbtn .opt[data-l="es"]{color:var(--copper-soft)}
+  .langbtn:focus-visible{outline:2px solid var(--copper-soft);outline-offset:2px}
 </style>
 </head>
 <body>
 
 <div class="trim" aria-hidden="true"></div>
 
+<div class="langbar">
+  <button type="button" class="langbtn" id="langbtn" aria-label="Ver en español">
+    <span class="opt" data-l="en">English</span><span class="sep">|</span><span class="opt" data-l="es">Español</span>
+  </button>
+</div>
+
 <header>
   <p class="brand">Mandi Cocina Mexicana</p>
   <h1>Chile en Nogada</h1>
-  <p class="tag">The dish Mexico made to celebrate becoming Mexico.</p>
-  <span class="now">Our seasonal feature</span>
+  <p class="tag" lang="en">The dish Mexico made to celebrate becoming Mexico.</p>
+  <p class="tag" lang="es">El platillo que México creó para celebrar su nacimiento como nación.</p>
+  <span class="now" lang="en">Our seasonal feature</span>
+  <span class="now" lang="es">Platillo de temporada</span>
 </header>
 
-<main>
+<main lang="en">
 
   <section>
     <p class="kicker">Origin story</p>
@@ -185,6 +208,57 @@
 
 </main>
 
+<main lang="es">
+
+  <section>
+    <p class="kicker">La historia</p>
+    <h2>Nació en Puebla</h2>
+    <p>El Chile en Nogada viene de Puebla, una ciudad colonial al oriente de la Ciudad de México, famosa por las cocinas de sus conventos y las monjas que cocinaban en ellas. Su historia es parte realidad, parte leyenda y completamente mexicana.</p>
+    <p>En 1821, después de más de diez años de guerra, México logró su independencia de España. Agustín de Iturbide, comandante del Ejército Trigarante, firmó los Tratados de Córdoba en Veracruz y partió rumbo a la Ciudad de México, con una parada en Puebla en el camino.</p>
+    <p>Según cuenta la historia, a las monjas agustinas del Convento de Santa Mónica, conocidas por su cocina, se les pidió preparar un banquete en su honor. Querían un platillo que se pareciera a la nueva nación.</p>
+    <div class="date">
+      <div class="num">28</div>
+      <div class="txt"><strong>28 de agosto</strong>El día de San Agustín, santo patrono de Iturbide, y el día en que, según se cuenta, se celebró su llegada.</div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Míralo de cerca</p>
+    <h2>Una bandera en tu plato</h2>
+    <p>Las monjas reunieron los ingredientes verdes, blancos y rojos que pudieron encontrar para honrar los colores del Ejército Trigarante. Más tarde, Iturbide eligió esos mismos tres colores para la bandera de México, que siguen ondeando hoy.</p>
+    <div class="colors">
+      <div class="color">
+        <div class="swatch" style="background:var(--green)"></div>
+        <div><h3>Verde</h3><p>Independencia</p></div>
+      </div>
+      <div class="color">
+        <div class="swatch" style="background:var(--white)"></div>
+        <div><h3>Blanco</h3><p>Religión, y la <em>nogada</em> de nuez que le da nombre al platillo</p></div>
+      </div>
+      <div class="color">
+        <div class="swatch" style="background:var(--red)"></div>
+        <div><h3>Rojo</h3><p>Unión</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">Por qué es especial</p>
+    <h2>Un platillo de muchas manos</h2>
+    <p>El Chile en Nogada es una celebración de México, y prepararlo lleva mucho tiempo y muchas manos. En México, las familias se reúnen para prepararlo y luego se sientan juntas a la mesa a disfrutar el fruto de su trabajo.</p>
+    <p>Los historiadores dicen que en Puebla ya se preparaban chiles rellenos y salsas de nuez mucho antes de 1821. En México, a nadie le importa. La historia es demasiado buena, y el platillo, demasiado hermoso.</p>
+  </section>
+
+  <section>
+    <div class="home">
+      <p class="kicker" style="color:#fde3d2">La conexión Mandi</p>
+      <h2>De Puebla a nuestra mesa</h2>
+      <p>Este platillo viene de Puebla, y nuestra familia también. Cada Chile en Nogada que servimos lleva un poquito de casa, y nos llena de orgullo compartirlo contigo.</p>
+    </div>
+  </section>
+
+</main>
+
 <footer>
   <p class="provecho">¡Buen provecho!</p>
   <p class="name">Mandi Cocina Mexicana</p>
@@ -192,5 +266,29 @@
 
 <div class="trim" aria-hidden="true"></div>
 
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('langbtn');
+  function set(l){
+    root.setAttribute('data-lang',l); root.lang=l;
+    btn.setAttribute('aria-label', l==='es' ? 'View in English' : 'Ver en español');
+    document.title = l==='es' ? 'Chile en Nogada | Mandi Cocina Mexicana' : 'Chile en Nogada | Mandi Cocina Mexicana';
+  }
+  var l='en';
+  try{
+    var q=new URLSearchParams(location.search).get('lang');
+    var saved=localStorage.getItem('mandi-lang');
+    if(q==='es'||q==='en') l=q;
+    else if(saved==='es'||saved==='en') l=saved;
+    else if((navigator.language||'').toLowerCase().indexOf('es')===0) l='es';
+  }catch(e){}
+  set(l);
+  btn.addEventListener('click',function(){
+    var n=root.getAttribute('data-lang')==='es'?'en':'es'; set(n);
+    try{localStorage.setItem('mandi-lang',n)}catch(e){}
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
 </body>
 </html>
